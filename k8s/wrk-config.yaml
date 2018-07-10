@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wrk-config
+  labels:
+    app: wrk
+data:
+  WRK_HTTP_TARGET: "http://localhost:8080"
+  VAULT_TOKEN: "REMOVED"
+  WRK_THREADS: "1"
+  WRK_CONNECTIONS: "1"
+  WRK_DURATION: "1m"
+  WRK_LUA_FILE: "batch/postbatch160.lua"

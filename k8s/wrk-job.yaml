@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: wrk
+  labels:
+    app: wrk
+spec:
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app: wrk
+    spec:
+      containers:
+      - name: wrk
+        image: kyralak/wrk-vault-transit:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 4
+            memory: 1Gi
+        envFrom:
+        - configMapRef:
+            name: wrk-config
+      restartPolicy: OnFailure

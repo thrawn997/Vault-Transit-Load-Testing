@@ -1,0 +1,4 @@
+#!/bin/bash
+echo STARTING ......
+/wrk -t$WRK_THREADS -c$WRK_CONNECTIONS -d$WRK_DURATION -H "X-Vault-Token: $VAULT_TOKEN" -s $WRK_LUA_FILE $WRK_HTTP_TARGET
+echo DONE
